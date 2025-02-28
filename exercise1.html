@@ -2,19 +2,29 @@
 <html>
 <head>
     <title>Lab5 - Exercise 1</title>
+    <style>
+        #container {
+            white-space: no-wrap;
+        }
+
+        input, label, button {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <input type="text" id="textInput" placeholder="Type something here..."/>
-    <label id="textLabel"></label>
-    <br>
-    <button id="redButton">Red</button>
-    <button id="blueButton">Blue</button>
-    <button id="greenButton">Green</button>
-    <button id="orangeButton">Orange</button>
-    <button id="purpleButton">Purple</button>
-</body>
+    <div id="container">
+        <input type="text" id="textInput" placeholder="Type something here..."/>
+        <label id="textLabel"></label>
+        <button id="redButton">Red</button>
+        <button id="blueButton">Blue</button>
+        <button id="greenButton">Green</button>
+        <button id="orangeButton">Orange</button>
+        <button id="purpleButton">Purple</button>
+    </div>
+</body>    
 <script type="text/javascript">
-    // Get references to elements
     const textInput = document.getElementById('textInput');
     const textLabel = document.getElementById('textLabel');
     const redButton = document.getElementById('redButton');
