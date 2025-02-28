@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab5 - Exercise 3</title>
+    <style>
+        #container {
+            white-space: no-wrap;
+        }
+
+        input, label, button {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <input type="text" id="textInput" placeholder="Enter user number (1-30)"/>
+        <label id="textLabel"></label>
+        <button id="redButton">Red</button>
+        <button id="blueButton">Blue</button>
+        <button id="greenButton">Green</button>
+        <button id="orangeButton">Orange</button>
+        <button id="purpleButton">Purple</button>
+    </div>
+</body>    
+<script type="text/javascript">
+    async function retrieveData(num){
+        let data = await fetch("https://67c2015761d8935867e51587.mockapi.io/users_api")
+        let results = await data.json();
+        let found = false
+        for (let i = 0; i < results.length; i++){
+            if (results[i].id === num){
+                found = true;
+                textLabel.textContent = `ID: ${results[i].id}, Name: ${results[i].first_name}, Group: ${results[i].user_group}`;
+                break;
+            }
+        }
+        if (found === false){
+            textLabel.textContent = "No users were found with the provided User_ID.";
+        }
+
+    }
+    const textInput = document.getElementById('textInput');
+    const textLabel = document.getElementById('textLabel');
+    const redButton = document.getElementById('redButton');
+    const blueButton = document.getElementById('blueButton');
+    const greenButton = document.getElementById('greenButton');
+    const orangeButton = document.getElementById('orangeButton');
+    const purpleButton = document.getElementById('purpleButton');
+
+    textInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') { 
+            retrieveData(textInput.value); 
+        }
+    });
+
+    redButton.addEventListener('click', function() {
+        textLabel.style.color = 'red';
+    });
+
+    blueButton.addEventListener('click', function() {
+        textLabel.style.color = 'blue';
+    });
+
+    greenButton.addEventListener('click', function() {
+        textLabel.style.color = 'green';
+    });
+
+    orangeButton.addEventListener('click', function() {
+        textLabel.style.color = 'orange';
+    });
+
+    purpleButton.addEventListener('click', function() {
+        textLabel.style.color = 'purple';
+    });
+</script>
+</html>
